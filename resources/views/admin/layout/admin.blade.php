@@ -19,7 +19,7 @@
         <a href="{{ route('categorybooks.index') }}" class="px-4 py-2">Категории книг</a>
         @auth('admin')
         <a href="{{ route('account', auth('admin')->user()) }}" class="px-4 py-2">
-            {{ dd(Auth::guard('admin')->user())}}
+            {{ auth('admin')->user()->name ?? 'Guest' }}
         </a>
         <a href="{{ route('logout') }}" class="px-4 py-2">Выйти</a>
         @elseauth('web')
@@ -28,7 +28,7 @@
         </a>
         <a href="{{ route('logout') }}" class="px-4 py-2    ">Выйти</a>
         @else
-        <a href="{{ route('login') }}" class="px-4 py-2">{{ dd(Auth::guard('admin')->user()) }}</a>
+        <a href="{{ route('login') }}" class="px-4 py-2">Войти</a>
         @endauth
     </div>
 

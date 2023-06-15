@@ -16,10 +16,9 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // if(auth('web')->user()->role_id != 1 || auth('admin')->user()->role_id == 2 && auth('admin')->user()->role === 'Admin'){
-        if (auth('web')->user()->role === 'Admin' || auth('admin')->user()->role === 'Admin') {
+        if (auth('admin')->user()->role === 'Admin' || auth('web')->user()->role === 'Admin') {
             return $next($request);
         }
-        abort(403, 'Unauthorized.');
+        return back();
     }
 }
