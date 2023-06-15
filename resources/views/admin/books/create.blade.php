@@ -6,7 +6,7 @@
 
 <div class="flex justify-center items-center w-full bg-gray-50">
     <div class="w-1/2 bg-white rounded shadow-2xl p-8 m-4">
-        <h1 class="block w-full text-center text-gray-800 text-2xl font-bold ">Register</h1>
+        <h1 class="block w-full text-center text-gray-800 text-2xl font-bold ">Добавление книги</h1>
         <form action="{{ route('books.store') }}" method="post">
             @csrf
             <div class="flex flex-col mb-4">

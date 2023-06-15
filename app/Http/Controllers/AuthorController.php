@@ -10,17 +10,12 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
-    private $authorRepository;
-    public function __construct()
-    {
-        $this->authorRepository = new AuthorRepository;
-    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(AuthorRepository $authorRepository)
     {
-        $authors = $this->authorRepository->authors();
+        $authors = $authorRepository->authors();
         return view('admin.authors.index', compact('authors'));
     }
 

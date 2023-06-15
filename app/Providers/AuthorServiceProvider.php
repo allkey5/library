@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Library\Services\AuthorService;
+use App\Services\AuthorService;
 use Illuminate\Support\ServiceProvider;
 
 class AuthorServiceProvider extends ServiceProvider

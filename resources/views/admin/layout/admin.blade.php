@@ -12,27 +12,32 @@
 
 <body>
     <div class="flex justify-center text-gray-800">
-        <a href="{{ route('authors.index') }}" class="px-4 py-2">Авторы</a>
-        <a href="{{ route('users.index') }}" class="px-4 py-2">Пользователи</a>
         <a href="{{ route('books.index') }}" class="px-4 py-2">Книги</a>
-        <a href="{{ route('categories.index') }}" class="px-4 py-2">Категории</a>
-        <a href="{{ route('categorybooks.index') }}" class="px-4 py-2">Категории книг</a>
         @auth('admin')
-        <a href="{{ route('account', auth('admin')->user()) }}" class="px-4 py-2">
+        <p class="px-4 py-2">
             {{ auth('admin')->user()->name ?? 'Guest' }}
-        </a>
+        </p>
         <a href="{{ route('logout') }}" class="px-4 py-2">Выйти</a>
         @elseauth('web')
         <a href="{{ route('account', auth('web')->user()->id) }}" class="px-4 py-2">
             {{ auth('web')->user()->name ?? 'Guest' }}
         </a>
-        <a href="{{ route('logout') }}" class="px-4 py-2    ">Выйти</a>
+        <a href="{{ route('logout') }}" class="px-4 py-2">Выйти</a>
         @else
         <a href="{{ route('login') }}" class="px-4 py-2">Войти</a>
         @endauth
     </div>
 
     <div class="main">
+        <div class="flex justify-center text-gray-800">
+            @auth('admin')
+            <a href="{{ route('authors.index') }}" class="px-4 py-2">Авторы</a>
+            <a href="{{ route('users.index') }}" class="px-4 py-2">Пользователи</a>
+            <a href="{{ route('books.index') }}" class="px-4 py-2">Книги</a>
+            <a href="{{ route('categories.index') }}" class="px-4 py-2">Категории</a>
+            <a href="{{ route('categorybooks.index') }}" class="px-4 py-2">Категории книг</a>
+            @endauth
+        </div>
         @yield('content')
     </div>
 </body>

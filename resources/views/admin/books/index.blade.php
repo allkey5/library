@@ -3,8 +3,8 @@
 
 @section('content')
 @auth('admin')
-
 <a href="{{ route('books.create') }}" class="block bg-green-400 hover:bg-green-600 text-white text-lg m-10 p-3 rounded w-52 text-center">Добавить книгу</a>
+@endauth
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-center text-gray-500 p-10">
         <thead>
@@ -54,16 +54,19 @@
                 </td>
                 @endif
                 <td>
-                    <form action="{{ route('books.destroy', $book->id) }}" method="post">
+                    @auth('admin')
+                    <form action="{{ route('books.destroy', $book) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
                     </form>
+                    @elseauth('web')
+                    <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
+                    @endauth
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-@endauth
 @endsection
