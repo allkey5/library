@@ -6,8 +6,8 @@
 <div>
     <div class="mx-auto px-96 pt-10">
         <div class="">
-            <h1 class="text-2xl font-bold">{{ auth('web')->user()->name }} {{ auth('web')->user()->last_name }}</h1>
-            <h1 class="text-2xl">Email: {{ auth('web')->user()->email }}</h1>
+            <h1 class="text-2xl font-bold">{{ auth('user')->user()->name }} {{ auth('user')->user()->last_name }}</h1>
+            <h1 class="text-2xl">Email: {{ auth('user')->user()->email }}</h1>
         </div>
         <div class="mx-auto text-center pt-5 text-gray-900 text-2xl font-bold">
             <h1>Ваша аренда:</h1>

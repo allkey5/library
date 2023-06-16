@@ -10,12 +10,17 @@ class AuthService
 
     public function login($request, $credentials)
     {
-        if (auth()->guard('admin')->attempt($credentials)) {
-            $user = auth()->guard('admin')->user();
+        if (auth()->guard('user')->attempt($credentials)) {
+            $user = auth()->guard('user')->user();
+            // dd($user);
             if ($user->role_id == 2) {
                 $request->session()->regenerate();
-            } elseif ($user->role_id == 1 && auth()->guard('web')->attempt($credentials)) {
+                $user = auth()->guard('admin')->attempt($credentials);
+                // dd(auth()->guard('admin')->user());
+            } elseif ($user->role_id == 1) {
+                // $request->session()->invalidate();
                 $request->session()->regenerate();
+                // dd(auth()->guard('user')->user());
             }
         }
         return back()->withErrors([

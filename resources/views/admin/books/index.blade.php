@@ -60,7 +60,7 @@
                         @method('DELETE')
                         <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
                     </form>
-                    @elseauth('web')
+                    @elseauth('user')
                     <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
                     @endauth
                 </td>

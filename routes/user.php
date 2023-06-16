@@ -19,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [MainController::class, 'index']);
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-Route::post('/login_form', [AuthController::class, 'login'])->name('login_form');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/register', [UserController::class, 'create'])->name('register');
-Route::post('/register_form', [AuthController::class, 'register'])->name('register_form');
+Route::middleware(['user'])->group(function () {
+    Route::get('/account/{id}', [UserController::class, 'show'])->name('account');
+    Route::get('/books/page', [BookController::class, 'index'])->name('books.page');
+    Route::get('/books/booking/{id}')->name('books.booking');
+});

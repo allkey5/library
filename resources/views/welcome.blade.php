@@ -838,9 +838,9 @@
                 {{ auth('admin')->user()->name ?? 'Admin' }}
             </a>
             <a href="{{ route('logout') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log Out</a>
-            @elseauth('web')
+            @elseauth('user')
             <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                {{ auth('web')->user()->name ?? 'Guest' }}
+                {{ auth('user')->user()->name ?? 'Guest' }}
             </a>
             <a href="{{ route('exit') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log Out</a>
             @else
