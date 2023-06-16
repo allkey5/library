@@ -16,12 +16,4 @@ class RoleServiceProvider extends ServiceProvider
             return new RoleService();
         });
     }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
-        //
-    }
 }

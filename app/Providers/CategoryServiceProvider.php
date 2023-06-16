@@ -16,12 +16,4 @@ class CategoryServiceProvider extends ServiceProvider
             return new CategoryService();
         });
     }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
-        //
-    }
 }

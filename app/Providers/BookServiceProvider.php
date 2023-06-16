@@ -16,12 +16,4 @@ class BookServiceProvider extends ServiceProvider
             return new BookService();
         });
     }
-
-    /**
-     * Bootstrap services.
-     */
-    public function boot(): void
-    {
-        //
-    }
 }
