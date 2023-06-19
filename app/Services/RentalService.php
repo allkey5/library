@@ -6,10 +6,17 @@ use App\Models\Rental;
 use Illuminate\Support\Facades\DB;
 
 class RentalService {
-    public function create(RentalRequest $request)
+    public function create($request)
     {
-        return DB::transaction(function () use ($request){
-            return Rental::create($request->validated());
+        $data = [
+            'user_id' => auth('user')->user()->id,
+            'book_id' => $request,
+            'is_rented' => 1,
+            'rented_to' => $request->date,
+        ];
+        dd($data);
+        return DB::transaction(function () use ($data){
+            return Rental::create($data);
         });
     }
     public function destroy($rental)

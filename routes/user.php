@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\RentalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['user'])->group(function () {
     Route::get('/account/{id}', [UserController::class, 'show'])->name('account');
+
     Route::get('/books/page', [BookController::class, 'index'])->name('books.page');
-    Route::get('/books/booking/{id}')->name('books.booking');
+    Route::post('/books/page/{book}', [BookingController::class, 'create'])->name('books.booking');
+
+    Route::get('/books/rent/{book}', [RentalController::class, 'create'])->name('rental.create');
 });

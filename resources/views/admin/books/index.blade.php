@@ -27,7 +27,7 @@
                     {{ $loop->index+1 }}
                 </th>
                 <td>
-                    <img src="{{ $book->cover }}" alt="" srcset="">
+                    <!-- <img src={{ $book->cover }} alt=""> -->
                 </td>
                 <td class="px-6 py-4">
                     {{ $book->name }}
@@ -61,7 +61,10 @@
                         <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
                     </form>
                     @elseauth('user')
-                    <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
+                    <form action="{{ route('books.booking', $book->id) }}" method="post">
+                        @csrf
+                        <button class="block bg-blue-400 hover:bg-blue-600 text-white text-lg mx-auto p-3 text-center rounded w-36">Арендовать</button>
+                    </form>
                     @endauth
                 </td>
             </tr>

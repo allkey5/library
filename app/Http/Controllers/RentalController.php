@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Rental;
+use App\Services\RentalService;
 use Illuminate\Http\Request;
 
 class RentalController extends Controller
@@ -18,9 +20,10 @@ class RentalController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Book $book, RentalService $rentalService)
     {
-        //
+        dd($book);
+        $rentalService->create($book);
     }
 
     /**

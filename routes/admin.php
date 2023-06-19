@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware(['auth:admin'])->group(function () {
 
 Route::middleware(['admin'])->group(function () {
-    Route::get('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     Route::get('/main', [MainController::class, 'admin'])->name('main');
     Route::resource('/categories', CategoryController::class)->except(['show']);
     Route::resource('/books', BookController::class);

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookingRequest;
+use App\Http\Requests\BookRequest;
+use App\Models\Book;
 use App\Models\Booking;
+use App\Services\BookingService;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -18,9 +22,13 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request, BookingService $bookingService)
+    // public function create(string $book, BookingService $bookingService)
     {
-        //
+        // echo $request;
+        dd($request);
+        // $booking = $bookingService->create($request);
+        // return route('books.page');
     }
 
     /**
