@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RentalRequest;
 use App\Models\Book;
+use App\Models\Booking;
 use App\Models\Rental;
 use App\Services\RentalService;
 use Illuminate\Http\Request;
@@ -24,7 +25,11 @@ class RentalController extends Controller
     public function create(Book $book, Request $request, RentalService $rentalService)
     {
         // dd($data);
-        $rentalService->create($book, $request);
+        $existingBooking = Booking::where('book_id', $book->id)->first();
+        $existingRental = Rental::where('book_id', $book->id)->first();
+        if (!$existingBooking && !$existingRental){
+            $rentalService->create($book, $request);
+        }
     }
 
     /**

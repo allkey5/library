@@ -25,8 +25,11 @@ class BookingController extends Controller
     public function create(Book $book, BookingService $bookingService)
     {
         // dd($book);
-        $bookingService->create($book);
-        return route('books.page');
+        $existingBooking = Booking::where('book_id', $book->id)->first();
+        if (!$existingBooking) {
+            $bookingService->create($book);
+            return route('books.page');
+        }
     }
 
     /**
