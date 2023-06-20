@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RentalRequest;
 use App\Models\Book;
 use App\Models\Rental;
 use App\Services\RentalService;
@@ -12,26 +13,27 @@ class RentalController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Book $book)
     {
-        //
+        return view('user.rentals.create', compact("book"));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Book $book, RentalService $rentalService)
+    public function create(Book $book, Request $request, RentalService $rentalService)
     {
-        dd($book);
-        $rentalService->create($book);
+        // dd($data);
+        $rentalService->create($book, $request);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RentalRequest $request, RentalService $rentalService)
     {
-        //
+        // $rentalService->create($request);
+        return redirect(route('books.page'));
     }
 
     /**

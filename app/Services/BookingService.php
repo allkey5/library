@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\BookingRequest;
+use App\Http\Requests\BookRequest;
 use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,7 @@ class BookingService
     {
         $data = [
             'user_id' => auth('user')->user()->id,
-            'book_id' => $request->book_id,
+            'book_id' => $request->id,
             'is_booked' => 1,
         ];
         return DB::transaction(function () use ($data) {

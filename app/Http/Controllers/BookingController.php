@@ -22,13 +22,11 @@ class BookingController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request, BookingService $bookingService)
-    // public function create(string $book, BookingService $bookingService)
+    public function create(Book $book, BookingService $bookingService)
     {
-        // echo $request;
-        dd($request);
-        // $booking = $bookingService->create($request);
-        // return route('books.page');
+        // dd($book);
+        $bookingService->create($book);
+        return route('books.page');
     }
 
     /**

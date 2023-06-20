@@ -26,5 +26,6 @@ Route::middleware(['user'])->group(function () {
     Route::get('/books/page', [BookController::class, 'index'])->name('books.page');
     Route::post('/books/page/{book}', [BookingController::class, 'create'])->name('books.booking');
 
-    Route::get('/books/rent/{book}', [RentalController::class, 'create'])->name('rental.create');
+    Route::get('/books/rent/{book}', [RentalController::class, 'index'])->name('rental.index');
+    Route::post('/books/rent/create/{book}', [RentalController::class, 'create'])->name('rental.create');
 });

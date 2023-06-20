@@ -61,10 +61,11 @@
                         <button class="block bg-red-400 hover:bg-red-600 text-white text-lg mx-auto p-3 rounded">Удалить</button>
                     </form>
                     @elseauth('user')
-                    <form action="{{ route('books.booking', $book->id) }}" method="post">
+                    <form action="{{ route('books.booking', $book) }}" method="post">
                         @csrf
-                        <button class="block bg-blue-400 hover:bg-blue-600 text-white text-lg mx-auto p-3 text-center rounded w-36">Арендовать</button>
+                        <button class="block bg-blue-400 hover:bg-blue-600 text-white text-lg mx-auto p-3 text-center rounded w-36">Бронировать</button>
                     </form>
+                    <a href="{{ route('rental.index', $book) }}" class="block bg-blue-400 hover:bg-blue-600 text-white text-lg mx-auto p-3 text-center rounded w-36">Арендовать</a>
                     @endauth
                 </td>
             </tr>
